@@ -29,7 +29,7 @@ require (
 	github.com/opentracing/opentracing-go v1.1.0
 	github.com/pkg/errors v0.9.1
 	github.com/prometheus/alertmanager v0.18.0
-	github.com/prometheus/client_golang v1.11.1
+	github.com/prometheus/client_golang v1.7.1
 	github.com/prometheus/client_model v0.2.0
 	github.com/prometheus/common v0.26.0
 	github.com/samuel/go-zookeeper v0.0.0-20190810000440-0ceca61e4d75
@@ -118,5 +118,6 @@ require (
 
 replace (
 	github.com/golang/lint => golang.org/x/lint v0.0.0-20190409202823-959b441ac422
+	github.com/prometheus/client_golang v1.2.0 => github.com/prometheus/client_golang v1.11.1
 	k8s.io/klog => github.com/simonpasquier/klog-gokit v0.1.0
 )

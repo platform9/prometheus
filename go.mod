@@ -13,7 +13,7 @@ require (
 	github.com/go-kit/kit v0.9.0
 	github.com/go-logfmt/logfmt v0.4.0
 	github.com/go-openapi/strfmt v0.19.2
-	github.com/gogo/protobuf v1.2.2-0.20190730201129-28a6bbf47e48
+	github.com/gogo/protobuf v1.3.2
 	github.com/golang/snappy v0.0.1
 	github.com/google/pprof v0.0.0-20190723021845-34ac40c74b70
 	github.com/gophercloud/gophercloud v0.3.0

@@ -50,9 +50,9 @@ require (
 	gopkg.in/yaml.v2 v2.2.7
 	gopkg.in/yaml.v3 v3.0.0-20220521103104-8f96da9f5d5e
 	k8s.io/api v0.0.0-20190813020757-36bff7324fb7
-	k8s.io/apimachinery v0.0.0-20190809020650-423f5d784010
+	k8s.io/apimachinery v0.0.0-20190927203648-9ce6eca90e73
 	k8s.io/client-go v0.0.0-20190620085101-78d2af792bab
-	k8s.io/klog v0.4.0
+	k8s.io/klog v1.0.0
 )
 
 require (
@@ -111,7 +111,7 @@ require (
 	golang.org/x/text v0.7.0 // indirect
 	google.golang.org/appengine v1.5.0 // indirect
 	gopkg.in/inf.v0 v0.9.0 // indirect
-	k8s.io/kube-openapi v0.0.0-20190709113604-33be087ad058 // indirect
+	k8s.io/kube-openapi v0.0.0-20190816220812-743ec37842bf // indirect
 	k8s.io/utils v0.0.0-20190221042446-c2654d5206da // indirect
 	sigs.k8s.io/yaml v1.1.0 // indirect
 )

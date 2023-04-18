@@ -14,9 +14,9 @@ BUILDDIR=$(CURDIR)
 registry_url ?= docker.io
 image_name = ${registry_url}/platform9/prometheus
 DOCKERFILE?=$(CURDIR)/Dockerfile
-UPSTREAM_VERSION?=v$(cat VERSION)
+UPSTREAM_VERSION?=$(cat ./VERSION)
 image_tag = $(UPSTREAM_VERSION)-pmk-$(TEAMCITY_BUILD_ID)
-PF9_TAG=$(image_name):${image_tag}
+PF9_TAG="v$(image_name):${image_tag}"
 
 # Needs to be defined before including Makefile.common to auto-generate targets
 #DOCKER_ARCHS ?= amd64 armv7 arm64 s390x

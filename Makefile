@@ -14,8 +14,7 @@ BUILDDIR=$(CURDIR)
 registry_url ?= docker.io
 image_name = ${registry_url}/platform9/prometheus
 DOCKERFILE?=$(CURDIR)/Dockerfile
-UPSTREAM_VERSION ?= 'v'
-UPSTREAM_VERSION+=$(shell cat ./VERSION)
+UPSTREAM_VERSION?=$(shell cat ./VERSION)
 image_tag = $(UPSTREAM_VERSION)-pmk-$(TEAMCITY_BUILD_ID)
 PF9_TAG="$(image_name):${image_tag}"
 

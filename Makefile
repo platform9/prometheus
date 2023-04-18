@@ -112,6 +112,6 @@ pf9-image: npm_licenses
 
 pf9-push:
 	echo $(PF9_TAG) > $(BUILDDIR)/container-tag
-#	docker login
-#	docker push $(PF9_TAG)\
-#	&& docker rmi $(PF9_TAG)
+	docker login
+	docker push $(PF9_TAG)\
+	&& docker rmi $(PF9_TAG)

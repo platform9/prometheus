@@ -2,7 +2,7 @@
 set -x
 
 # Set the Go version you want to install
-GO_VERSION=1.17.16
+GO_VERSION=1.17.13
 
 # Set the OS and architecture
 OS=linux

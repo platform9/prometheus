@@ -12,15 +12,7 @@ ARCH=amd64
 pushd $HOME || exit
 curl -LO "https://golang.org/dl/go$GO_VERSION.$OS-$ARCH.tar.gz"
 # Extract the Go binary to $HOME/go
-sudo rm -rf /usr/local/go
-sudo tar -C /usr/local/ -xzf go$GO_VERSION.$OS-$ARCH.tar.gz
+mkdir go
+sudo tar -C ./go -xzf go$GO_VERSION.$OS-$ARCH.tar.gz
 popd || exit
-# Add Go to the PATH environment variable
-echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
 
-
-# Refresh the PATH environment variable
-source ~/.bashrc
-
-# Verify that Go has been installed
-go version || exit

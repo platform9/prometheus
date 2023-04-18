@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#!/bin/bash
+set -x
 
 # Set the Go version you want to install
 GO_VERSION=1.17.16

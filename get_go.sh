@@ -21,4 +21,4 @@ echo 'export PATH=$PATH:$HOME/go/bin' >> ~/.bashrc
 source ~/.bashrc
 
 # Verify that Go has been installed
-go version
+go version || exit

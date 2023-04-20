@@ -10,10 +10,17 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+BUILDDIR=$(CURDIR)
+registry_url ?= docker.io
+image_name = ${registry_url}/platform9/prometheus
+DOCKERFILE?=$(CURDIR)/Dockerfile
+UPSTREAM_VERSION?=$(shell cat ./VERSION)
+image_tag = $(UPSTREAM_VERSION)-pmk-$(TEAMCITY_BUILD_ID)
+PF9_TAG="$(image_name):${image_tag}"
 
 # Needs to be defined before including Makefile.common to auto-generate targets
-DOCKER_ARCHS ?= amd64 armv7 arm64 s390x
-
+#DOCKER_ARCHS ?= amd64 armv7 arm64 s390x
+DOCKER_ARCHS ?= amd64
 REACT_APP_PATH = web/ui/react-app
 REACT_APP_SOURCE_FILES = $(wildcard $(REACT_APP_PATH)/public/* $(REACT_APP_PATH)/src/* $(REACT_APP_PATH)/tsconfig.json)
 REACT_APP_OUTPUT_DIR = web/ui/static/react
@@ -93,3 +100,18 @@ bench_tsdb: build_tsdb
 	@$(GO) tool pprof --alloc_space -svg $(TSDB_BIN) $(TSDB_BENCHMARK_OUTPUT_DIR)/mem.prof > $(TSDB_BENCHMARK_OUTPUT_DIR)/memprof.alloc.svg
 	@$(GO) tool pprof -svg $(TSDB_BIN) $(TSDB_BENCHMARK_OUTPUT_DIR)/block.prof > $(TSDB_BENCHMARK_OUTPUT_DIR)/blockprof.svg
 	@$(GO) tool pprof -svg $(TSDB_BIN) $(TSDB_BENCHMARK_OUTPUT_DIR)/mutex.prof > $(TSDB_BENCHMARK_OUTPUT_DIR)/mutexprof.svg
+
+pf9-image: npm_licenses
+	docker build -t $(PF9_TAG) \
+    		-f $(DOCKERFILE_PATH) \
+    		--build-arg ARCH="amd64" \
+    		--build-arg OS="linux" \
+    		$(DOCKERBUILD_CONTEXT)
+
+
+
+pf9-push:
+	echo $(PF9_TAG) > $(BUILDDIR)/container-tag
+	docker login
+	docker push $(PF9_TAG)\
+	&& docker rmi $(PF9_TAG)
